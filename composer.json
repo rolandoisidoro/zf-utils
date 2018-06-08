@@ -1,0 +1,39 @@
+{
+    "name": "rolandoisidoro/zf-utils",
+    "type": "library",
+    "description": "Misc utilities for Zend Framework",
+    "keywords": ["Zend Framework","Twitter Bootstrap","module"],
+    "homepage": "https://github.com/rolandoisidoro/zf-utils",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Rolando Isidoro",
+            "homepage": "https://github.com/rolandoisidoro",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/rolandoisidoro/zf-utils/issues"
+    },
+    "suggest": {
+        "neilime/zf-twbs-helper-module": "Zend Framework module for easy integration of Twitter Bootstrap"
+    },
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zend-mvc-plugin-flashmessenger": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ZFUtils\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "zf": {
+          "module": "ZFUtils"
+        }
+    }
+}
