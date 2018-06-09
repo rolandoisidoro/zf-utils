@@ -5,7 +5,7 @@
     "keywords": ["Zend Framework","Twitter Bootstrap","module"],
     "homepage": "https://github.com/rolandoisidoro/zf-utils",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Rolando Isidoro",
