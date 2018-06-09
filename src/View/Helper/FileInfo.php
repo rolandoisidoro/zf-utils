@@ -43,10 +43,11 @@ class FileInfo extends AbstractHelper
         'pptx'  => 'powerpoint',
         'php'   => 'code',
         'rar'   => 'archive',
+        'sql'   => 'code',
         'svg'   => 'image',
         'tar'   => 'archive',
         'tgz'   => 'archive',
-        'sql'   => 'code',
+        'txt'   => 'text',
         'webp'  => 'image',
         'xls'   => 'excel',
         'xlsx'  => 'excel',
@@ -66,6 +67,7 @@ class FileInfo extends AbstractHelper
         'image'      => 'fa-file-image',
         'pdf'        => 'fa-file-pdf',
         'powerpoint' => 'fa-file-powerpoint',
+        'text'       => 'fa-file-alt',
         'video'      => 'fa-file-video',
         'word'       => 'fa-file-word',
     ];
@@ -107,6 +109,15 @@ class FileInfo extends AbstractHelper
             // Get file size and extension if exists
             $size      = $this->getSize($filePath);
             $extension = $this->getExtension($filePath);
+
+            switch ($style) {
+                case self::FA_SOLID:
+                case self::FA_REGULAR:
+                    break;
+
+                default:
+                    $style = self::FA_REGULAR;
+            }
 
             // Assign FA icon for the given file extension
             $extensionCategory = isset($this->extensionsCategories[$extension]) ?
@@ -154,7 +165,7 @@ class FileInfo extends AbstractHelper
         $size     = filesize($filePath);
         $exponent = $size > 0 ? floor(log($size, 1024)) : 0;
 
-        return number_format($size / pow(1024, $exponent , 2, '.', ',') . ' ' . $this->units[$exponent]);
+        return number_format($size / pow(1024, $exponent), 2, '.', ',') . ' ' . $this->units[$exponent];
     }
 
 
@@ -166,8 +177,8 @@ class FileInfo extends AbstractHelper
      * @access public
      * @return void
      */
-    public function __invoke(string $filePath, bool $absolute = false) {
-        return $this->fileInfo($filePath, $absolute);
+    public function __invoke(string $filePath, bool $absolute = false, $style = 'far') {
+        return $this->fileInfo($filePath, $absolute, $style);
     }
 }
 
