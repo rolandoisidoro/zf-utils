@@ -49,10 +49,17 @@ return [
             'ZFUtils\View\Helper\BootstrapNotify' => 'ZFUtils\View\Helper\Factory\BootstrapNotifyFactory',
         ],
 
+        'invokables' => [
+            'ZFUtils\View\Helper\FileInfo',
+        ],
+
         'aliases' => [
             'bootstrapnotify' => 'ZFUtils\View\Helper\BootstrapNotify',
             'bootstrapNotify' => 'ZFUtils\View\Helper\BootstrapNotify',
             'BootstrapNotify' => 'ZFUtils\View\Helper\BootstrapNotify',
+            'fileinfo'        => 'ZFUtils\View\Helper\FileInfo',
+            'fileInfo'        => 'ZFUtils\View\Helper\FileInfo',
+            'FileInfo'        => 'ZFUtils\View\Helper\FileInfo',
         ],
     ],
 ];
