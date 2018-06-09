@@ -16,14 +16,14 @@ use Zend\Mvc\Plugin\FlashMessenger\View\Helper\FlashMessenger as ZendFlashMessen
  */
 class BootstrapNotify extends ZendFlashMessengerViewHelper
 {
-	/**
-	 * View helper config, contains Bootstrap Notify options and settings
-	 * @var mixed
-	 */
-	protected $config = [];
+    /**
+     * View helper config, contains Bootstrap Notify options and settings
+     * @var mixed
+     */
+    protected $config = [];
 
     /**
-	 * Renamed default and error namespaces to match BS4 naming convention
+     * Renamed default and error namespaces to match BS4 naming convention
      * @var array
      */
     protected $classMessages = [
@@ -40,28 +40,28 @@ class BootstrapNotify extends ZendFlashMessengerViewHelper
      * @var string
      */
     protected $messageOpenFormat = "
-		<script>
-			$(document).ready( function() {";
-	protected $messageSeparatorString = "
-				$.notify(
-					%s,
-					%s
-				);";
+        <script>
+            $(document).ready( function() {";
+    protected $messageSeparatorString = "
+                $.notify(
+                    %s,
+                    %s
+                );";
     protected $messageCloseString = "
-			});
-		</script>
-	";
+            });
+        </script>
+    ";
 
 
-	/**
-	 * __construct 
-	 * 
-	 * @param  array $config 
-	 * @return void
-	 */
-	public function __construct(array $config)
+    /**
+     * __construct 
+     * 
+     * @param  array $config 
+     * @return void
+     */
+    public function __construct(array $config)
     {
-		$this->config = $config;
+        $this->config = $config;
     }
 
 
@@ -80,27 +80,27 @@ class BootstrapNotify extends ZendFlashMessengerViewHelper
         array $classes  = [],
         $autoEscape     = null
     ) {
-		// Return empty string if no messages provided
+        // Return empty string if no messages provided
         if (empty($messages)) {
             return '';
         }
 
         // Prepare type for separator tag
-		if (isset($this->classMessages[$namespace])) {
-			$type = $this->classMessages[$namespace];
-		} else {
-			$type = $this->classMessages['default'];
-		}
+        if (isset($this->classMessages[$namespace])) {
+            $type = $this->classMessages[$namespace];
+        } else {
+            $type = $this->classMessages['default'];
+        }
 
-		// Set auto escape option
+        // Set auto escape option
         if (null === $autoEscape) {
             $autoEscape = $this->getAutoEscape();
         }
 
-		// Set Bootstrap Notify options and settings
-		$options          = $this->config['options'];
-		$settings         = $this->config['settings'];
-		$settings['type'] = $type;
+        // Set Bootstrap Notify options and settings
+        $options          = $this->config['options'];
+        $settings         = $this->config['settings'];
+        $settings['type'] = $type;
 
         // Flatten message array
         $escapeHtml           = $this->getEscapeHtmlHelper();
@@ -126,22 +126,22 @@ class BootstrapNotify extends ZendFlashMessengerViewHelper
             }
         );
 
-		// Return empty string if no messages to print
+        // Return empty string if no messages to print
         if (empty($messagesToPrint)) {
             return '';
         }
 
         // Generate markup
         $markup = $this->getMessageOpenFormat();
-		
-		foreach ($messagesToPrint as $message) {
-			$options['message']  = $message;
-			$markup             .= sprintf(
-				$this->getMessageSeparatorString(),
-				json_encode($options), 
-				json_encode($settings)
-			);
-		}
+
+        foreach ($messagesToPrint as $message) {
+            $options['message']  = $message;
+            $markup             .= sprintf(
+                $this->getMessageSeparatorString(),
+                json_encode($options), 
+                json_encode($settings)
+            );
+        }
 
         $markup .= $this->getMessageCloseString();
 

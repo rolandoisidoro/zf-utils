@@ -4,10 +4,10 @@ return [
         'boostrap_notify' => [
             // See http://bootstrap-notify.remabledesigns.com/#documentation-options
             'options' => [
-				'icon'    => '',
-				'title'   => '',
-				'url'     => '',
-				'target'  => '',
+                'icon'    => '',
+                'title'   => '',
+                'url'     => '',
+                'target'  => '',
             ],
 
             // See http://bootstrap-notify.remabledesigns.com/#documentation-settings
