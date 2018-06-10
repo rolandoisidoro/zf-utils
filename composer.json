@@ -29,9 +29,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "dev-file-info-view-helper"
-        },
         "zf": {
           "module": "ZFUtils"
         }
